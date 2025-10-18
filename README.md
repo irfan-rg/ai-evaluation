@@ -1,16 +1,14 @@
 # Caliber - AI Agent Evaluation Platform
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/caliber)
+## Overview
+Caliber is a precision AI evaluation and monitoring platform designed for teams who need to track, analyze, and optimize their AI model performance in real-time. Built with enterprise-grade security and scalability, Caliber provides comprehensive analytics and configurable evaluation policies to ensure your AI systems deliver consistent, high-quality results.
 
-## 🌐 Live Demo
-**Try it now:** [https://your-project-name.vercel.app](https://your-project-name.vercel.app)
+## Live Demo
+**Try it now:** [https://caliber-ai.vercel.app/](https://caliber-ai.vercel.app/)
 
 **Test Credentials:**
 - Email: `test@example.com`
 - Password: `Test123!`
-
-## Overview
-Caliber is a precision AI evaluation and monitoring platform designed for teams who need to track, analyze, and optimize their AI model performance in real-time. Built with enterprise-grade security and scalability, Caliber provides comprehensive analytics and configurable evaluation policies to ensure your AI systems deliver consistent, high-quality results.
 
 ## Features
 - **Multi-tenant authentication** with Supabase for secure data isolation
@@ -94,7 +92,8 @@ src/
 ### Installation
 ```bash
 # Clone repository
-git clone [your-repo-url]
+git clone https://github.com/irfan-rg/caliber.git
+
 cd caliber
 
 # Install dependencies

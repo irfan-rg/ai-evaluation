@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --surface-backdrop: rgba(255, 255, 255, 0.55);
+  --surface-border: rgba(15, 15, 15, 0.08);
+  --surface-shadow: 0 18px 42px rgba(15, 15, 15, 0.12);
+  --surface-shadow-hover: 0 24px 64px rgba(15, 15, 15, 0.16);
+  --surface-shadow-card: 0 14px 32px rgba(15, 15, 15, 0.08);
+  --glass-border-light: rgba(255, 255, 255, 0.65);
+  --glass-border-dark: rgba(255, 255, 255, 0.12);
+  --glass-overlay: rgba(255, 255, 255, 0.8);
+  --glass-overlay-dark: rgba(44, 44, 46, 0.78);
+  --outline-muted: rgba(28, 28, 30, 0.1);
+  --outline-strong: rgba(28, 28, 30, 0.25);
+  --color-background: #fafafa;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #f2f2f7;
+  --color-muted: #e5e5ea;
+  --color-primary: #007aff;
+  --color-primary-soft: rgba(0, 122, 255, 0.12);
+  --color-success: #34c759;
+  --color-warning: #ff9500;
+  --color-error: #ff3b30;
+  --color-text: #1c1c1e;
+  --color-text-muted: #8e8e93;
+  --color-chart-1: #007aff;
+  --color-chart-2: #5856d6;
+  --color-chart-3: #af52de;
+  --color-chart-4: #ff2d55;
+  --focus-ring: 0 0 0 3px rgba(0, 122, 255, 0.2);
+  --font-outfit: var(--font-outfit);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --surface-backdrop: rgba(18, 18, 18, 0.68);
+    --surface-border: rgba(255, 255, 255, 0.04);
+    --surface-shadow: 0 18px 36px rgba(0, 0, 0, 0.48);
+    --surface-shadow-hover: 0 24px 64px rgba(0, 0, 0, 0.56);
+    --surface-shadow-card: 0 14px 52px rgba(0, 0, 0, 0.55);
+    --color-background: #1c1c1e;
+    --color-surface: #2c2c2e;
+    --color-surface-elevated: #3a3a3c;
+    --color-muted: #48484a;
+    --color-text: #ffffff;
+    --color-text-muted: rgba(235, 235, 245, 0.6);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-background);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-outfit), "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: -0.01em;
+  text-rendering: optimizeLegibility;
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+::selection {
+  background-color: rgba(0, 122, 255, 0.15);
+  color: inherit;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.18) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.18);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.glass-card {
+  border-radius: 1.75rem;
+  border: 1px solid var(--glass-border-light);
+  background: var(--glass-overlay);
+  backdrop-filter: blur(32px);
+  box-shadow: var(--surface-shadow-card);
+  transition: transform 320ms ease, box-shadow 320ms ease;
+  will-change: transform;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--surface-shadow-hover);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass-card {
+    border-color: var(--glass-border-dark);
+    background: var(--glass-overlay-dark);
+  }
+}
+
+.surface-card {
+  border-radius: 1.75rem;
+  border: 1px solid var(--outline-muted);
+  background: var(--color-surface);
+  box-shadow: var(--surface-shadow-card);
+  transition: transform 320ms ease, box-shadow 320ms ease;
+  will-change: transform;
+}
+
+.surface-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--surface-shadow-hover);
+}
+
+.fade-in-quick {
+  animation: fade-in 240ms ease forwards;
+}
+
+.slide-up {
+  animation: slide-up 280ms ease forwards;
+}
+
+.scale-in {
+  animation: scale-in 260ms ease forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

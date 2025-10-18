@@ -170,26 +170,6 @@ export default function TrendChart({ data }: TrendChartProps) {
                 <span className="text-sm text-[#8E8E93]">{value}</span>
               )}
             />
-            <Area
-              yAxisId="left"
-              type={chartConfig.curveType}
-              dataKey="avgScore"
-              stroke="transparent"
-              fill="url(#scoreGradient)"
-              fillOpacity={1}
-              isAnimationActive
-              animationDuration={600}
-            />
-            <Area
-              yAxisId="right"
-              type={chartConfig.curveType}
-              dataKey="avgLatency"
-              stroke="transparent"
-              fill="url(#latencyGradient)"
-              fillOpacity={1}
-              isAnimationActive
-              animationDuration={600}
-            />
             <Line
               yAxisId="left"
               type={chartConfig.curveType}

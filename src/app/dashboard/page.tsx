@@ -45,7 +45,8 @@ export default function DashboardPage() {
   const [fromCache, setFromCache] = useState(false) // Track if data came from cache
   const [isPending, startTransition] = useTransition()
   const [hasLoadedOnce, setHasLoadedOnce] = useState(false) // Track if we've loaded data before
-  const previousStatsRef = useRef<StatsData | null>(null)
+  const previousStats7DayRef = useRef<StatsData | null>(null)
+  const previousStats30DayRef = useRef<StatsData | null>(null)
   const router = useRouter()
   const supabase = createClient()
 
@@ -75,18 +76,27 @@ export default function DashboardPage() {
       }
       
       if (statsResponse.ok) {
-        const responseData = await statsResponse.json() as { data: StatsData }
-        const { data } = responseData
-        setStats((current) => {
-          previousStatsRef.current = current
-          return data
-        })
+        const responseData = await statsResponse.json() as { data: StatsData } | null
+        if (responseData?.data) {
+          const { data } = responseData
+          setStats((current) => {
+            // Store previous stats for the correct time period
+            if (days === 7) {
+              previousStats7DayRef.current = current
+            } else {
+              previousStats30DayRef.current = current
+            }
+            return data
+          })
+        }
       }
 
       if (evalsResponse.ok) {
-        const responseData = await evalsResponse.json() as { data: EvaluationRow[] }
-        const { data } = responseData
-        setRecentEvals(data || [])
+        const responseData = await evalsResponse.json() as { data: EvaluationRow[] } | null
+        if (responseData?.data) {
+          const { data } = responseData
+          setRecentEvals(data || [])
+        }
       }
     } catch (error) {
       console.error('Error loading dashboard:', error)
@@ -228,7 +238,10 @@ export default function DashboardPage() {
       </div>
 
       {stats && (
-        <StatsCards stats={stats} previousStats={previousStatsRef.current} />
+        <StatsCards 
+          stats={stats} 
+          previousStats={days === 7 ? previousStats7DayRef.current : previousStats30DayRef.current} 
+        />
       )}
 
       <div className="grid gap-8 lg:grid-cols-[2fr_3fr]">
